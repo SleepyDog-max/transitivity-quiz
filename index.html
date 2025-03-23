@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transitivity Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        }
+        .quiz-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 550px;
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #34495e;
+            margin: 5px 0;
+        }
+        .question {
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+        #prev {
+            background: #e74c3c;
+        }
+        #next {
+            background: #3498db;
+        }
+        #restart {
+            background: #2ecc71;
+            display: none;
+        }
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        button:hover:not(:disabled) {
+            transform: scale(1.05);
+            filter: brightness(110%);
+        }
+        .summary {
+            display: none;
+        }
+        .summary.active {
+            display: block;
+        }
+        input[type="text"], input[type="radio"] {
+            margin: 8px 0;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="text"] {
+            width: 100%;
+        }
+        label {
+            color: #555;
+        }
+        #score {
+            font-weight: bold;
+            color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Question 1 -->
+        <div class="question active" id="q1">
+            <h3>Question 1</h3>
+            <p>Which verb in the following sentence is transitive?</p>
+            <p>"She <em>laughed</em> loudly but then <em>dropped</em> her book."</p>
+            <label><input type="radio" name="q1" value="a"> a) laughed</label><br>
+            <label><input type="radio" name="q1" value="b"> b) dropped</label><br>
+            <label><input type="radio" name="q1" value="c"> c) both</label><br>
+            <label><input type="radio" name="q1" value="d"> d) neither</label>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question" id="q2">
+            <h3>Question 2</h3>
+            <p>Complete the sentence with a direct object to make the intransitive verb “run” transitive:</p>
+            <p>“He <em>runs</em> ______ every morning.”</p>
+            <input type="text" id="q2-answer" placeholder="Type your answer here">
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question" id="q3">
+            <h3>Question 3</h3>
+            <p>The sentence “They <em>arrived</em> late to the party” contains a transitive verb.</p>
+            <label><input type="radio" name="q3" value="a"> a) True</label><br>
+            <label><input type="radio" name="q3" value="b"> b) False</label>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question" id="q4">
+            <h3>Question 4</h3>
+            <p>Rewrite this sentence to make the intransitive verb “sleep” transitive by changing the verb:</p>
+            <p>“The baby <em>slept</em> peacefully in the crib.”</p>
+            <input type="text" id="q4-answer" placeholder="Type your answer here">
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question" id="q5">
+            <h3>Question 5</h3>
+            <p>Explain the difference in transitivity between “She <em>sang</em> beautifully” and “She <em>sang</em> a song.” Identify whether each use of “sang” is transitive or intransitive.</p>
+            <input type="text" id="q5-answer" placeholder="Type your answer here" style="height: 60px;">
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question" id="q6">
+            <h3>Question 6</h3>
+            <p>Does the phrase “on the table” have the same grammatical role in these two sentences?</p>
+            <p>1) "She <em>worked</em> on the table all day."</p>
+            <p>2) "She <em>placed</em> the book on the table."</p>
+            <p>Explain your answer.</p>
+            <input type="text" id="q6-answer" placeholder="Type your answer here" style="height: 60px;">
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question" id="q7">
+            <h3>Question 7</h3>
+            <p>Consider the following active sentence:</p>
+            <p>“The teacher <em>assigned</em> the students a challenging project.”</p>
+            <p>Which of the following is the correct passive transformation that follows the rule about only primary objects becoming subjects in passive sentences?</p>
+            <label><input type="radio" name="q7" value="a"> A) The students were assigned a challenging project.</label><br>
+            <label><input type="radio" name="q7" value="b"> B) A challenging project was assigned the students.</label><br>
+            <label><input type="radio" name="q7" value="c"> C) A challenging project was assigned to the students.</label><br>
+            <label><input type="radio" name="q7" value="d"> D) The students assigned a challenging project.</label>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary" id="summary">
+            <h3>Quiz Summary</h3>
+            <p>Score: <span id="score"></span>/7</p>
+            <h4>Answers and Explanations:</h4>
+            <div id="summary-details"></div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="buttons">
+            <button id="prev">Previous</button>
+            <button id="next">Next</button>
+            <button id="restart">Restart</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        const summary = document.getElementById('summary');
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const restartBtn = document.getElementById('restart');
+        let currentQuestion = 0;
+        let answers = {};
+
+        function showQuestion(index) {
+            questions.forEach((q, i) => {
+                q.classList.toggle('active', i === index);
+            });
+            summary.classList.remove('active');
+            prevBtn.disabled = index === 0;
+            nextBtn.textContent = index === questions.length - 1 ? 'Submit' : 'Next';
+            restartBtn.style.display = 'none';
+        }
+
+        function saveAnswer() {
+            const qId = questions[currentQuestion].id;
+            if (qId === 'q2' || qId === 'q4' || qId === 'q5' || qId === 'q6') {
+                answers[qId] = document.getElementById(`${qId}-answer`).value.trim();
+            } else {
+                const selected = document.querySelector(`input[name="${qId}"]:checked`);
+                answers[qId] = selected ? selected.value : null;
+            }
+        }
+
+        function showSummary() {
+            saveAnswer();
+            let score = 0;
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'a mile',
+                q3: 'b',
+                q4: 'The baby took a peaceful sleep in the crib.',
+                q5: 'In “She sang beautifully,” “sang” is intransitive (no object). In “She sang a song,” “sang” is transitive (takes “a song” as a direct object). “Sang” is ambitransitive.',
+                q6: 'No, “on the table” does not have the same grammatical role. In “She worked on the table all day,” “worked” is intransitive, and “on the table” indicates location. In “She placed the book on the table,” “placed” is transitive (takes “the book”), and “on the table” indicates destination.',
+                q7: 'a'
+            };
+            const explanations = {
+                q1: '“Dropped” is transitive (takes “her book” as a direct object); “laughed” is intransitive (no object).',
+                q2: 'Adding “a mile” (or similar, e.g., “the race”) makes “runs” transitive by giving it a direct object.',
+                q3: '“Arrived” is intransitive; it doesn’t take a direct object.',
+                q4: '“The baby took a peaceful sleep in the crib.” Explanation: “took” is transitive, and “a peaceful sleep” is the object.',
+                q5: '“Sang” shifts from intransitive (no object) to transitive (with “a song”) showing its ambitransitive nature.',
+                q6: 'The role of “on the table” changes based on the verb’s transitivity: location with intransitive “worked,” destination with transitive “placed.”',
+                q7: 'In the active sentence, “the students” is the primary object and “a challenging project” is the secondary object. Only the primary object (the students) can become the subject in a passive construction like “The students were assigned a challenging project.” Option B is ungrammatical, C uses a different structure (prepositional dative), and D changes the meaning entirely.'
+            };
+
+            let summaryDetails = '';
+            for (let i = 1; i <= 7; i++) {
+                const qId = `q${i}`;
+                const userAnswer = answers[qId] || 'Not answered';
+                const correctAnswer = correctAnswers[qId] === 'a' && qId === 'q7' ? 'A) The students were assigned a challenging project.' : correctAnswers[qId];
+                const isCorrect = qId === 'q7' ? userAnswer === 'a' : userAnswer.toLowerCase().includes(correctAnswers[qId].toLowerCase());
+                if (isCorrect) score++;
+                summaryDetails += `
+                    <p><strong>Question ${i}:</strong></p>
+                    <p>Your answer: ${userAnswer}</p>
+                    <p>Correct answer: ${correctAnswer}</p>
+                    <p>Explanation: ${explanations[qId]}</p>
+                    <p>${isCorrect ? 'Correct!' : 'Incorrect'}</p><hr>
+                `;
+            }
+
+            document.getElementById('score').textContent = score;
+            document.getElementById('summary-details').innerHTML = summaryDetails;
+            questions.forEach(q => q.classList.remove('active'));
+            summary.classList.add('active');
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            restartBtn.style.display = 'block';
+        }
+
+        prevBtn.addEventListener('click', () => {
+            saveAnswer();
+            currentQuestion--;
+            showQuestion(currentQuestion);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            saveAnswer();
+            if (currentQuestion === questions.length - 1) {
+                showSummary();
+            } else {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            answers = {};
+            questions.forEach(q => {
+                if (q.id === 'q2' || q.id === 'q4' || q.id === 'q5' || q.id === 'q6') {
+                    document.getElementById(`${q.id}-answer`).value = '';
+                } else {
+                    document.querySelectorAll(`input[name="${q.id}"]`).forEach(input => input.checked = false);
+                }
+            });
+            showQuestion(0);
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'block';
+        });
+
+        showQuestion(0);
+    </script>
+</body>
+</html>
+
